@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ClassRoomResource\Pages;
 use App\Filament\Resources\ClassRoomResource\RelationManagers;
+use App\Filament\Resources\ClassRoomResource\RelationManagers\SectionsRelationManager;
 use App\Models\ClassRoom;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -38,6 +39,8 @@ class ClassRoomResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('sort')
+            ->reorderable('sort')
             ->columns([
 
                 Tables\Columns\TextColumn::make('name')
@@ -67,7 +70,7 @@ class ClassRoomResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            SectionsRelationManager::make()
         ];
     }
 

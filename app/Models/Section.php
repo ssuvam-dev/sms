@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\TeamRelation;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Section extends Model
 {
@@ -18,4 +19,9 @@ class Section extends Model
     protected $casts =[
         'data' => "json"
     ];
+
+     public function classRooms() :BelongsToMany
+    {
+        return $this->belongsToMany(ClassRoom::class,'class_sections');
+    }
 }
