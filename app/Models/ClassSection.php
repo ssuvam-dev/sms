@@ -10,4 +10,14 @@ class ClassSection extends Model
         'class_id',
         'section_id',
     ];
+
+    public function classRoom()
+    {
+        return $this->belongsTo(ClassRoom::class);
+    }
+
+    public function sections()
+    {
+        return $this->belongsTo(Section::class);
+    }
 }
